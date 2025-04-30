@@ -118,7 +118,7 @@ function mostrarDatosPokemonEncontrado($poke) {
     if (isset($_SESSION['usuario'])) {
         echo '<div class="d-flex justify-content-end gap-2 mt-2">';
         echo '<a href="modificar.php?id=' . $poke['id'] . '" class="btn btn-warning btn-sm fw-bold shadow-sm rounded-pill px-3">Modificar</a>';
-        echo '<form action="" method="get" class="form-eliminar" data-pokemon-nombre="' . $poke['nombre'] . '">
+        echo '<form action="../index.php" method="get" class="form-eliminar" data-pokemon-nombre="' . $poke['nombre'] . '">
               <input type="hidden" name="pokemonDelete" value="' . $poke["id"] . '">
                 <button class="btn btn-danger btn-sm fw-bold shadow-sm rounded-pill px-3 text-decoration-none"> Eliminar </button>
               </form>';

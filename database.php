@@ -62,6 +62,12 @@ function obtenerUsuario($database) {
 
 
 
+function deletePokemon($database, $idPokemon) {
+    $sql = "DELETE FROM pokemones WHERE id = ?";
+    $stmt = $database->prepare($sql);
+    $stmt->bind_param("i", $idPokemon);
+    return $stmt->execute();
+}
 
 
 

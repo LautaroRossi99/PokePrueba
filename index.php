@@ -4,10 +4,14 @@ global $database;
 require_once $_SERVER['DOCUMENT_ROOT'] . '/PokedexPrueba/Functions/functions.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/PokedexPrueba/database.php';
 
+$pokdemonDelete = "";
 
+if (isset($_GET['pokemonDelete'])) {
+    $pokdemonDelete = intval($_GET['pokemonDelete']);
+    deletePokemon($database, $pokdemonDelete);
+}
 
 $pokemones = obtenerPokemones($database);
-
 
 ?>
 
