@@ -1,0 +1,27 @@
+.num-pokemon{
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+
+.card-pokemon{
+    width: 15rem;
+    background-color: #f4f4f4;
+}
+
+.img-card-pokemon{
+    height: 200px;
+    object-fit: contain;
+}
+
+.img-element{
+    height: 50px;
+    object-fit: contain;
+    margin-right: 5px
+}
