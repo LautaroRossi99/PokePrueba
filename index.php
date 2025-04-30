@@ -30,7 +30,7 @@ $pokemones = obtenerPokemones($database);
         </div>
         <!-- 🟥 Texto centrado -->
         <div class="mx-auto text-white fw-bold fs-4">
-            POKEDEX
+            <a class="text-white text-decoration-none" href="index.php"> POKEDEX </a>
         </div>
 
         <div class="text-white">
@@ -67,11 +67,6 @@ $pokemones = obtenerPokemones($database);
                 mostrarDatosPokemon($pokemones);
                 ?>
 
-
-                <?php
-                // Llamar a la función para mostrar los pokemones
-                //mostrarElementoPokemon($pokemones);
-                ?>
             </div>
 
 
