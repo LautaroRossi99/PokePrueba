@@ -67,11 +67,6 @@ $pokemones = obtenerPokemones($database);
                 mostrarDatosPokemon($pokemones);
                 ?>
 
-
-                <?php
-                // Llamar a la función para mostrar los pokemones
-                //mostrarElementoPokemon($pokemones);
-                ?>
             </div>
 
 
