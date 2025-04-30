@@ -25,3 +25,15 @@
     object-fit: contain;
     margin-right: 5px
 }
+
+.swal2-confirm {
+    background-color: #f44336 !important;
+    border-color: #f44336 !important;
+    color: white !important;
+}
+
+.swal2-cancel {
+    background-color: #607d8b !important;
+    border-color: #607d8b !important;
+    color: white !important;
+}
