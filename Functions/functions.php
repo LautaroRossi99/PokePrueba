@@ -3,6 +3,7 @@
 
 define('RUTA_POKEMONES', '/PokedexPrueba/');
 define('RUTA_TIPOS', '/PokedexPrueba/Tipos/');
+define('RUTA_POKEMONES2', '/PokedexPrueba/Pokemones/');
 
 
 
@@ -104,7 +105,7 @@ function mostrarDatosPokemonEncontrado($poke) {
 
     // Columna de imagen centrada
     echo "<div class='col-md-4 d-flex justify-content-center'>";
-    echo "<img src='../Pokemones/{$poke["nombre"]}.png' class='img-fluid rounded-start' style='height: 200px; object-fit: contain;'>";
+    echo "<img src='" . RUTA_POKEMONES . $poke["imagen"] . "' class='img-fluid rounded-start' style='height: 200px; object-fit: contain;'>";
     echo "</div>";
 
     // Columna de contenido
