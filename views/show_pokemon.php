@@ -46,19 +46,6 @@ if (isset($_GET['pokemonVerMas'])) {
             mostrarDatosPokemonEncontrado($pokemonVerMas);
         }
         ?>
-<div class="container mt-4">
-    <form class="container d-flex flex-row justify-content-between align-items-center my-3" method="get" action="show_pokemon.php">
-        <input type="text" class="form-control w-75" name="pokemon" placeholder="Buscar Pokémon..." id="buscarPokemon">
-        <button class="btn btn-primary btn-md bg-danger border-none" style="border:none;" type="submit" id="btnBuscar">Buscar Pokémon</button>
-    </form>
-    <div class="row justify-content-center mt-4">
-        <?php
-        // Llamar a la función para mostrar los pokemones
-        verificarSiExistePokemonElegido($pokemones, $pokemon);
-        ?>
-    </div>
-
-</div>
 
     </div>
 

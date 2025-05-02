@@ -79,6 +79,8 @@ if (isset($_GET['pokemonVerMas'])) {
                 <div class="mb-3 select-wrapper">
                     <p for="tipos" class="form-label">Tipos</p>
                     <div class="checkbox-group">
+
+                        <div class="d-flex gap-4">
                         <label class="custom-checkbox">
                             <input type="checkbox" name="tipos[]" value="12">
                             <span class="checkbox-text">Acero</span>
@@ -103,6 +105,9 @@ if (isset($_GET['pokemonVerMas'])) {
                             <input type="checkbox" name="tipos[]" value="11">
                             <span class="checkbox-text">Fantasma</span>
                         </label>
+                        </div>
+
+                        <div class="d-flex gap-4">
                         <label class="custom-checkbox">
                             <input type="checkbox" name="tipos[]" value="2">
                             <span class="checkbox-text">Fuego</span>
@@ -122,28 +127,38 @@ if (isset($_GET['pokemonVerMas'])) {
                         <label class="custom-checkbox">
                             <input type="checkbox" name="tipos[]" value="1">
                             <span class="checkbox-text">Normal</span>
-                        </label><label class="custom-checkbox">
+                        </label>
+                        <label class="custom-checkbox">
                             <input type="checkbox" name="tipos[]" value="15">
                             <span class="checkbox-text">Siniestro</span>
-                        </label><label class="custom-checkbox">
+                        </label>
+                        </div>
+                        <div class="d-flex gap-4">
+                        <label class="custom-checkbox">
                             <input type="checkbox" name="tipos[]" value="4">
                             <span class="checkbox-text">Planta</span>
-                        </label><label class="custom-checkbox">
+                        </label>
+                        <label class="custom-checkbox">
                             <input type="checkbox" name="tipos[]" value="13">
                             <span class="checkbox-text">Psíquico</span>
-                        </label><label class="custom-checkbox">
+                        </label>
+                        <label class="custom-checkbox">
                             <input type="checkbox" name="tipos[]" value="10">
                             <span class="checkbox-text">Roca</span>
-                        </label><label class="custom-checkbox">
+                        </label>
+                        <label class="custom-checkbox">
                             <input type="checkbox" name="tipos[]" value="9">
                             <span class="checkbox-text">Tierra</span>
-                        </label><label class="custom-checkbox">
+                        </label>
+                        <label class="custom-checkbox">
                             <input type="checkbox" name="tipos[]" value="8">
                             <span class="checkbox-text">Veneno</span>
-                        </label><label class="custom-checkbox">
+                        </label>
+                        <label class="custom-checkbox">
                             <input type="checkbox" name="tipos[]" value="17">
                             <span class="checkbox-text">Volador</span>
                         </label>
+                        </div>
 
                     </div>
                     <small class="text-muted">Selecciona máximo dos tipo de Pokémon</small>
@@ -165,9 +180,13 @@ if (isset($_GET['pokemonVerMas'])) {
 
 
 
-<a href="index.php">Volver</a>
+<a href="../index.php">Volver</a>
+
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/PokedexPrueba/includes/footer.php'; ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="../assets/alert.js"></script>
+<script src="../assets/checkbox.js"></script>
+
 </body>
 </html>
