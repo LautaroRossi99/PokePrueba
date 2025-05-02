@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $files = null;
 
     if ($imagen && $imagen['error'] === UPLOAD_ERR_OK) {
-        $nombreLimpio = preg_replace("/[^a-zA-Z0-9\._-]/", "_", $imagen['name']);
+        $nombreLimpio = preg_replace("/[^a-zA-Z0-9\.-]/", "", $imagen['name']);
         $files = 'Pokemones/' . $nombreLimpio;
         $destino = '../' . $files;
 
@@ -62,4 +62,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
 }
-
