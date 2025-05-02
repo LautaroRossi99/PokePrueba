@@ -26,7 +26,7 @@ $tiposActuales = obtenerTiposPorPokemon($database, $pokemon['id']);
     <div class="card shadow-lg p-4 w-100" style="max-width: 600px;">
         <h2 class="text-center mb-4 text-danger">Modificar Pokémon</h2>
 
-        <form action="procesar_modificacion.php" method="POST">
+        <form action="procesar_modificacion.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?php echo $pokemon['id']; ?>">
 
             <div class="mb-3">
@@ -40,8 +40,8 @@ $tiposActuales = obtenerTiposPorPokemon($database, $pokemon['id']);
             </div>
 
             <div class="mb-3">
-                <label for="imagen" class="form-label">Nombre de imagen</label>
-                <input type="text" class="form-control" id="imagen" name="imagen" value="<?php echo $pokemon['imagen']; ?>" required>
+                <label for="imagen" class="form-label">Imagen</label>
+                <input type="file" class="form-control" id="imagen" name="imagen">
             </div>
 
             <div class="mb-3">
