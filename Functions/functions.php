@@ -2,13 +2,19 @@
 define('RUTA_TIPOS', '/PokedexPrueba/Tipos/');
 define('RUTA_POKEMONES', '/PokedexPrueba/');
 
+
+define('RUTA_POKEMONES', '/PokedexPrueba/');
+define('RUTA_TIPOS', '/PokedexPrueba/Tipos/');
+define('RUTA_POKEMONES2', '/PokedexPrueba/Pokemones/');
+
+
+
 // -------------------- INDEX --------------------
 
 // Función para mostrar los datos de los pokemones
 function mostrarDatosPokemon($coleccion)
 {
     foreach ($coleccion as $pokemon) {
-        // Card de pokemon
 
         echo '<div class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center mb-4">';
         echo '<div class="card rounded card-pokemon">';
@@ -103,7 +109,7 @@ function mostrarDatosPokemonEncontrado($poke) {
 
     // Columna de imagen centrada
     echo "<div class='col-md-4 d-flex justify-content-center'>";
-    echo "<img src='../Pokemones/{$poke["nombre"]}.png' class='img-fluid rounded-start' style='height: 200px; object-fit: contain;'>";
+    echo "<img src='" . RUTA_POKEMONES . $poke["imagen"] . "'class='img-fluid rounded-start' style='height: 200px; object-fit: contain;'>";
     echo "</div>";
 
     // Columna de contenido
@@ -149,5 +155,37 @@ function validarLogin($usersDB, $userIngresado, $contrasenaIngresada) {
     echo "Usuario o contraseña incorrectos.";
 }
 
+//funcion modificar
+function obtenerPokemonPorId($database, $id) {
+    $sql = "SELECT * FROM pokemones WHERE id = ?";
+    $stmt = $database->prepare($sql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
 
+    if ($resultado->num_rows === 1) {
+        return $resultado->fetch_assoc(); // Devuelve el Pokémon como array
+    }
+
+    return null; // Si no se encuentra, devuelve null
+}
+
+function obtenerTodosLosTipos($db) {
+    $result = $db->query("SELECT * FROM tipo ORDER BY elemento");
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+
+function obtenerTiposPorPokemon($db, $pokemon_id) {
+    $stmt = $db->prepare("SELECT tipo_id FROM pokemon_tipo WHERE pokemon_id = ?");
+    $stmt->bind_param("i", $pokemon_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $tipos = [];
+
+    while ($row = $result->fetch_assoc()) {
+        $tipos[] = $row['tipo_id'];
+    }
+
+    return $tipos;
+}
 ?>
