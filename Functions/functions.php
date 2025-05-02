@@ -1,8 +1,4 @@
 <?php
-define('RUTA_TIPOS', '/PokedexPrueba/Tipos/');
-define('RUTA_POKEMONES', '/PokedexPrueba/');
-
-
 define('RUTA_POKEMONES', '/PokedexPrueba/');
 define('RUTA_TIPOS', '/PokedexPrueba/Tipos/');
 define('RUTA_POKEMONES2', '/PokedexPrueba/Pokemones/');
