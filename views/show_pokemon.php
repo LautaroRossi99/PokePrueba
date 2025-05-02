@@ -7,11 +7,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/PokedexPrueba/database.php';
 $pokemones = obtenerPokemones($database);
 
 $pokemon = "";
-
 if (isset($_GET['pokemon'])) {
     $pokemon = strtolower($_GET['pokemon']);
-} else {
-    echo "No se recibió ningún Pokémon.";
 }
 
 $pokemonVerMas = [];
@@ -49,22 +46,6 @@ if (isset($_GET['pokemonVerMas'])) {
             mostrarDatosPokemonEncontrado($pokemonVerMas);
         }
         ?>
-<nav class="navbar navbar-expand-lg navbar-dark bg-danger px-4">
-    <div class="container-fluid d-flex justify-content-between align-items-center w-100">
-        <!-- 🔵 Logo Pokémon a la izquierda -->
-        <div>
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" alt="Pokeball" width="40" height="40" class="me-2">
-        </div>
-        <!-- 🟥 Texto centrado -->
-        <div class="mx-auto text-white fw-bold fs-4">
-            POKEDEX
-        </div>
-
-        <div class="text-white">
-            usuario
-        </div>
-    </div>
-</nav>
 <div class="container mt-4">
     <form class="container d-flex flex-row justify-content-between align-items-center my-3" method="get" action="show_pokemon.php">
         <input type="text" class="form-control w-75" name="pokemon" placeholder="Buscar Pokémon..." id="buscarPokemon">
