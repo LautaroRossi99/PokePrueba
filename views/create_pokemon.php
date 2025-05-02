@@ -51,9 +51,9 @@ if (isset($_GET['pokemonVerMas'])) {
     </form>
     <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
         <div class="card shadow-lg p-4 w-100" style="max-width: 600px;">
-            <h2 class="text-center mb-4 text-danger">Modificar Pokémon</h2>
+            <h2 class="text-center mb-4 text-danger">Crear Pokémon</h2>
 
-            <form action="../index.php" method="POST">
+            <form action="../index.php" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="id">
 
                 <div class="mb-3">
@@ -63,12 +63,12 @@ if (isset($_GET['pokemonVerMas'])) {
 
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo $pokemon['nombre']; ?>" required>
+                    <input type="text" class="form-control" id="nombre" name="nombre"required>
                 </div>
 
                 <div class="mb-3">
                     <label for="imagen" class="form-label">Nombre de imagen</label>
-                    <input type="text" class="form-control" id="imagen" name="imagen" required>
+                    <input type="file" class="form-control" id="imagen" name="imagen">
                 </div>
 
                 <div class="mb-3">
@@ -76,22 +76,86 @@ if (isset($_GET['pokemonVerMas'])) {
                     <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
                 </div>
 
-                <div class="mb-3">
-                    <label for="tipos" class="form-label">Tipos</label>
-                    <select multiple class="form-control" name="tipos[]" id="tipos" required>
-GI
-                    </select>
-                    <small class="text-muted">Usá Ctrl o Shift para seleccionar más de uno.</small>
-                </div>
+                <div class="mb-3 select-wrapper">
+                    <p for="tipos" class="form-label">Tipos</p>
+                    <div class="checkbox-group">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="12">
+                            <span class="checkbox-text">Acero</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="3">
+                            <span class="checkbox-text">Agua</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="18">
+                            <span class="checkbox-text">Bicho</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="14">
+                            <span class="checkbox-text">Dragón</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="5">
+                            <span class="checkbox-text">Eléctrico</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="11">
+                            <span class="checkbox-text">Fantasma</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="2">
+                            <span class="checkbox-text">Fuego</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="16">
+                            <span class="checkbox-text">Hada</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="6">
+                            <span class="checkbox-text">Hielo</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="7">
+                            <span class="checkbox-text">Lucha</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="1">
+                            <span class="checkbox-text">Normal</span>
+                        </label><label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="15">
+                            <span class="checkbox-text">Siniestro</span>
+                        </label><label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="4">
+                            <span class="checkbox-text">Planta</span>
+                        </label><label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="13">
+                            <span class="checkbox-text">Psíquico</span>
+                        </label><label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="10">
+                            <span class="checkbox-text">Roca</span>
+                        </label><label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="9">
+                            <span class="checkbox-text">Tierra</span>
+                        </label><label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="8">
+                            <span class="checkbox-text">Veneno</span>
+                        </label><label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="17">
+                            <span class="checkbox-text">Volador</span>
+                        </label>
 
+                    </div>
+                    <small class="text-muted">Selecciona máximo dos tipo de Pokémon</small>
+                </div>
                 <div class="mb-3">
                     <label for="habitat" class="form-label">Hábitat</label>
                     <input type="text" class="form-control" id="habitat" name="habitat"" required>
                 </div>
 
                 <div class="d-flex justify-content-between">
-                    <a href="indexAdmin.php" class="btn btn-secondary">Cancelar</a>
-                    <button type="submit" class="btn btn-success">Guardar cambios</button>
+                    <a href="../index.php" class="btn btn-secondary">Cancelar</a>
+                    <button type="submit" class="btn btn-success">Guardar Pokémon</button>
                 </div>
             </form>
         </div>

@@ -69,6 +69,46 @@ function deletePokemon($database, $idPokemon) {
     return $stmt->execute();
 }
 
+function createPokemon($database, $pokemon) {
+    // Primero insertamos el Pokémon en la tabla principal
+    $sql = "INSERT INTO pokemones (numero_pokedex, nombre, imagen, descripcion, habitat) VALUES (?, ?, ?, ?, ?)";
+    $stmt = $database->prepare($sql);
+
+    if (!$stmt) {
+        die("Error en prepare: " . $database->error);
+    }
+
+    $stmt->bind_param(
+        "issss", // Tipos: i = integer, s = string
+        $pokemon['numero_pokedex'],
+        $pokemon['nombre'],
+        $pokemon['imagen'],
+        $pokemon['descripcion'],
+        $pokemon['habitat']
+    );
+
+    $stmt->execute();
+
+    // Obtenemos el ID recién insertado
+    $pokemon_id = $stmt->insert_id;
+    $stmt->close();
+
+    // Ahora insertamos los tipos en la tabla intermedia
+    foreach ($pokemon['tipos'] as $tipo_id) {
+        guardarTipoPokemon($database, $pokemon_id, $tipo_id);
+    }
+}
+
+
+function guardarTipoPokemon($database, $pokemon_id, $tipo_id) {
+    $sql = "INSERT INTO pokemon_tipo (pokemon_id, tipo_id) VALUES (?, ?)";
+    $stmt = $database->prepare($sql);
+    $stmt->bind_param("ii", $pokemon_id, $tipo_id);
+    $stmt->execute();
+    $stmt->close();
+}
+
+
 
 
 

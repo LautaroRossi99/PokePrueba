@@ -4,12 +4,46 @@ global $database;
 require_once $_SERVER['DOCUMENT_ROOT'] . '/PokedexPrueba/Functions/functions.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/PokedexPrueba/database.php';
 
-$pokdemonDelete = "";
+$pokemonDelete = "";
 
 if (isset($_GET['pokemonDelete'])) {
-    $pokdemonDelete = intval($_GET['pokemonDelete']);
-    deletePokemon($database, $pokdemonDelete);
+    $pokemonDelete = intval($_GET['pokemonDelete']);
+    deletePokemon($database, $pokemonDelete);
 }
+
+$pokemonCreate = [];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $imagen = $_FILES['imagen'] ?? null;
+
+    $pokemonCreate = [
+        'numero_pokedex' => $_POST['numero_pokedex'] ?? null,
+        'nombre' => $_POST['nombre'] ?? '',
+        'imagen' => '', // se completa después si se sube bien
+        'descripcion' => $_POST['descripcion'] ?? '',
+        'tipos' => $_POST['tipos'] ?? [],
+        'habitat' => $_POST['habitat'] ?? '',
+    ];
+
+    if ($imagen && $imagen['error'] === UPLOAD_ERR_OK) {
+        $nombreLimpio = preg_replace("/[^a-zA-Z0-9\.-]/", "_", $imagen['name']);
+        $ruta = 'Pokemones/' . $nombreLimpio;
+
+
+        if (!move_uploaded_file($imagen['tmp_name'], $ruta)) {
+            echo "<div class='alert alert-danger mt-3'>❌ Error al subir el archivo.</div>";
+            exit;
+        }
+
+        // Si se subió correctamente, actualizamos el campo imagen
+        $pokemonCreate['imagen'] = $ruta;
+    }
+
+    createPokemon($database, $pokemonCreate);
+}
+
+
+
 
 $pokemones = obtenerPokemones($database);
 
@@ -26,35 +60,7 @@ $pokemones = obtenerPokemones($database);
 
 </head>
 <body style="background-color: #ffe6e6;">
-<nav class="navbar navbar-expand-lg navbar-dark bg-danger px-4">
-    <div class="container-fluid d-flex justify-content-between align-items-center w-100">
-        <!-- 🔵 Logo Pokémon a la izquierda -->
-        <div>
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" alt="Pokeball" width="40" height="40" class="me-2">
-        </div>
-        <!-- 🟥 Texto centrado -->
-        <div class="mx-auto text-white fw-bold fs-4">
-            <a class="text-white text-decoration-none" href="index.php"> POKEDEX </a>
-        </div>
-
-        <div class="text-white">
-
-            <div class="text-white">
-                <?php
-                // Verificar si el usuario está logueado
-                if (isset($_SESSION['usuario'])) {
-                    // Si está logueado, mostrar su nombre y el botón de cerrar sesión
-                    echo "<span>Bienvenido, " . $_SESSION['usuario'] . "</span> ";
-                    echo '<a href="views/login_out.php" class="text-white">Cerrar sesión</a>'; // Enlace a logout.php
-                } else {
-                    // Si no está logueado, mostrar el enlace de login
-                    echo '<a href="views/login.php">usuario</a>';
-                }
-                ?>
-            </div>
-        </div>
-    </div>
-</nav>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/PokedexPrueba/includes/navbar.php'; ?>
 <div class="container mt-4">
 
     <div class="row justify-content-center mt-4">
@@ -64,6 +70,8 @@ $pokemones = obtenerPokemones($database);
                     <input type="text" class="form-control w-75" name="pokemon" placeholder="Buscar Pokémon..." id="buscarPokemon">
                     <button class="btn btn-primary btn-md bg-danger border-none" style="border:none;" type="submit" id="btnBuscar">Buscar Pokémon</button>
                 </form>
+
+            <a href="views/create_pokemon.php" class="btn btn-primary btn-md bg-danger border-none text-decoration-none" style="border:none;">Crear Pokémon</a>
 
             <div class="row justify-content-center mt-4">
                 <?php
@@ -78,6 +86,9 @@ $pokemones = obtenerPokemones($database);
 
 
     </div>
+</div>
+
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/PokedexPrueba/includes/footer.php'; ?>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 </body>
