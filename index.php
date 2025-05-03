@@ -59,21 +59,29 @@ $pokemones = obtenerPokemones($database);
     <link rel="stylesheet" href="assets/style.css">
 
 </head>
-<body style="background-color: #ffe6e6;">
+<body class="d-flex flex-column min-vh-100" style="background-color: #ffe6e6;">
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/PokedexPrueba/includes/navbar.php'; ?>
 <div class="container mt-4">
 
     <div class="row justify-content-center mt-4">
 
-        <div class="container mt-4">
-                <form class="container d-flex flex-row justify-content-between align-items-center my-3" method="get" action="views/show_pokemon.php">
-                    <input type="text" class="form-control w-75" name="pokemon" placeholder="Buscar Pokémon..." id="buscarPokemon">
-                    <button class="btn btn-primary btn-md bg-danger border-none" style="border:none;" type="submit" id="btnBuscar">Buscar Pokémon</button>
-                </form>
+        <div class="row">
+            <form class="" method="get" action="views/show_pokemon.php">
+                <div class="row align-items-center g-2">
+                    <div class="col-md-8 col-sm-8">
+                        <input type="text" class="form-control" name="pokemon" placeholder="Buscar Pokémon..." id="buscarPokemon">
+                    </div>
+                    <div class="col-md-2 col-sm-2">
+                        <button class="btn btn-danger w-100" type="submit" id="btnBuscar">Buscar Pokémon</button>
+                    </div>
+                    <div class="col-md-2 col-sm-2">
+                        <a href="views/create_pokemon.php" class="btn btn-success w-100 text-decoration-none">Crear Pokémon</a>
+                    </div>
+                </div>
+            </form>
 
-            <a href="views/create_pokemon.php" class="btn btn-primary btn-md bg-danger border-none text-decoration-none" style="border:none;">Crear Pokémon</a>
 
-            <div class="row justify-content-center mt-4">
+            <div class=" row justify-content-center mt-4">
                 <?php
                 // Llamar a la función para mostrar los pokemones
                 mostrarDatosPokemon($pokemones);
