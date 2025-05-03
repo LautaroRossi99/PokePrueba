@@ -65,8 +65,18 @@ function verificarSiExistePokemonElegido($pokemones, $pokemon) {
     $encontrado = false;
 
     foreach ($pokemones as $poke) {
-        // Subcadena con cadena
-        if (strpos(strtolower($poke['nombre']), $pokemon) !== false) {
+        // Verifica si el nombre coincide
+        if (strpos(strtolower($poke['nombre']), strtolower($pokemon)) !== false) {
+            $datosPokemon[] = $poke;
+            $encontrado = true;
+        }
+        // Verifica si el número de la Pokédex coincide
+        elseif (is_numeric($pokemon) && (int)$poke['numero_pokedex'] === (int)$pokemon) {
+            $datosPokemon[] = $poke;
+            $encontrado = true;
+        }
+        // Verifica si el tipo coincide (tipo está en el campo 'tipos' de cada $poke)
+        elseif (strpos(quitarTildes(strtolower($poke['tipos'])), quitarTildes(strtolower($pokemon))) !== false){
             $datosPokemon[] = $poke;
             $encontrado = true;
         }
@@ -95,6 +105,10 @@ function verificarSiExistePokemonElegido($pokemones, $pokemon) {
         echo "<h1> No se encontró el nombre de: $pokemon </h1>";
         mostrarDatosPokemon($pokemones);
     }
+}
+
+function verificarSiExistePokemonElegidoPorTipo($db, $pokemon){
+    if ($pokemon['tipo_id'] == $db) {}
 }
 
 function mostrarDatosPokemonEncontrado($poke) {
@@ -132,6 +146,12 @@ function mostrarDatosPokemonEncontrado($poke) {
 
     echo "</div>"; // row
     echo "</div>"; // card
+}
+
+function quitarTildes($cadena) {
+    $buscar  = ['á','é','í','ó','ú','Á','É','Í','Ó','Ú'];
+    $reemplazar = ['a','e','i','o','u','A','E','I','O','U'];
+    return str_replace($buscar, $reemplazar, $cadena);
 }
 
 

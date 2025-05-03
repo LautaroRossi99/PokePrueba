@@ -67,7 +67,7 @@ $pokemones = obtenerPokemones($database);
 
         <div class="container mt-4">
                 <form class="container d-flex flex-row justify-content-between align-items-center my-3" method="get" action="views/show_pokemon.php">
-                    <input type="text" class="form-control w-75" name="pokemon" placeholder="Buscar Pokémon..." id="buscarPokemon">
+                    <input type="text" class="form-control w-75" name="pokemon" placeholder="Buscar Pokémon por nombre, tipo o número de la Pokédex" id="buscarPokemon">
                     <button class="btn btn-primary btn-md bg-danger border-none" style="border:none;" type="submit" id="btnBuscar">Buscar Pokémon</button>
                 </form>
 

@@ -16,11 +16,12 @@
             }
 
             if (isset($_SESSION['usuario'])) {
-                echo "<span>Bienvenido, " . $_SESSION['usuario'] . "</span> ";
-                echo '<a href="/PokedexPrueba/views/login_out.php" class="text-white">Cerrar sesión</a>';
+                echo 'Bienvenido, ' . $_SESSION['usuario'] . ' 
+          <a href="/PokedexPrueba/views/login_out.php" class="text-white">Cerrar sesión</a>';
             } else {
-                echo '<a href="/PokedexPrueba/views/login.php">usuario</a>';
+                echo '<a href="/PokedexPrueba/views/login.php" class="text-white text-decoration-none">Iniciar sesión</a>';
             }
+
             ?>
         </div>
     </div>
