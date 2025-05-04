@@ -33,19 +33,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $files = $row['imagen']; // imagen actual
     }
 
-    // Ahora actualizamos la base
+// Ahora actualizamos la base
     $stmt = $database->prepare("UPDATE pokemones SET numero_pokedex = ?, nombre = ?, imagen = ?, descripcion = ?, habitat = ? WHERE id = ?");
     $stmt->bind_param("issssi", $numero, $nombre, $files, $descripcion, $habitat, $id);
     $stmt->execute();
 
-    if ($stmt->affected_rows >= 0) {
-        // igual redireccionamos como éxito
-        header("Location: ../index.php?modificado=ok");
-        exit;
-    }
-
-
-    // Eliminar tipos actuales del Pokémon
+// Eliminar tipos actuales del Pokémon
     $stmt = $database->prepare("DELETE FROM pokemon_tipo WHERE pokemon_id = ?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
@@ -59,6 +52,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->bind_param("ii", $id, $tipo_id);
             $stmt->execute();
         }
-        exit;
     }
+
+
+    header("Location: ../index.php?modificado=ok");
+    exit;
 }

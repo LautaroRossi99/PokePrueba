@@ -34,6 +34,7 @@ if (isset($_GET['pokemonVerMas'])) {
         <input type="text" class="form-control w-75" name="pokemon" placeholder="Buscar Pokémon..." id="buscarPokemon">
         <button class="btn btn-primary btn-md bg-danger border-none" style="border:none;" type="submit" id="btnBuscar">Buscar Pokémon</button>
     </form>
+
     <div class="row justify-content-center mt-4">
         <?php
         // Si se pasa un pokemon como parámetro, llamar a verificarSiExistePokemonElegido
@@ -48,12 +49,16 @@ if (isset($_GET['pokemonVerMas'])) {
         ?>
 
     </div>
-
+    <div class="d-flex justify-content-center m-4">
+        <a href="../index.php" class="btn btn-secondary btn-sm px-4 fw-bold d-flex align-items-center gap-2 shadow-sm">
+            <i class="bi bi-arrow-left-circle"></i> Volver
+        </a>
+    </div>
 </div>
 
 
 
-<a href="index.php">Volver</a>
+
 
 
 <!-- Remove the container if you want to extend the Footer to full width. -->

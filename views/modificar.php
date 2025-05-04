@@ -65,14 +65,31 @@ $tiposActuales = obtenerTiposPorPokemon($database, $pokemon['id']);
 
                 <div class="col-12">
                     <label for="tipos" class="form-label">Tipos</label>
-                    <select multiple class="form-control" name="tipos[]" id="tipos" required>
-                        <?php foreach ($tiposTodos as $tipo): ?>
-                            <option value="<?php echo $tipo['id']; ?>" <?php echo in_array($tipo['id'], $tiposActuales) ? 'selected' : ''; ?>>
-                                <?php echo ucfirst($tipo['elemento']); ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
-                    <small class="text-muted">Usá Ctrl o Shift para seleccionar más de uno.</small>
+                    <div class="checkbox-group">
+                        <?php
+                        $tipos = [
+                            12 => "Acero", 3 => "Agua", 18 => "Bicho", 14 => "Dragón", 5 => "Eléctrico", 11 => "Fantasma",
+                            2 => "Fuego", 16 => "Hada", 6 => "Hielo", 7 => "Lucha", 1 => "Normal", 15 => "Siniestro",
+                            4 => "Planta", 13 => "Psíquico", 10 => "Roca", 9 => "Tierra", 8 => "Veneno", 17 => "Volador"
+                        ];
+
+                        $contador = 0;
+                        echo '<div class="d-flex flex-wrap gap-4">';
+                        foreach ($tipos as $id => $nombre) {
+                            if ($contador % 6 === 0 && $contador !== 0) {
+                                echo '</div><div class="d-flex flex-wrap gap-4 mt-2">';
+                            }
+                            $checked = in_array($id, $tiposActuales) ? 'checked' : '';
+                            echo '<label class="custom-checkbox">';
+                            echo "<input type='checkbox' name='tipos[]' value='$id' $checked>";
+                            echo "<span class='checkbox-text'>$nombre</span>";
+                            echo '</label>';
+                            $contador++;
+                        }
+                        echo '</div>';
+                        ?>
+                    </div>
+                    <small class="text-muted">Selecciona los tipos</small>
                 </div>
 
                 <div class="col-12 d-flex justify-content-between mt-4">
