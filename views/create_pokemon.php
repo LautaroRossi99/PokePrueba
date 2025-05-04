@@ -18,8 +18,8 @@ if (isset($_GET['pokemonVerMas'])) {
 
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -70,21 +70,87 @@ if (isset($_GET['pokemonVerMas'])) {
                 <div class="col-12">
                     <label for="tipos" class="form-label">Tipos</label>
                     <div class="checkbox-group">
-                        <?php
-                        $tipos = [
-                            12 => "Acero", 3 => "Agua", 18 => "Bicho", 14 => "Dragón",
-                            5 => "Eléctrico", 11 => "Fantasma", 2 => "Fuego", 16 => "Hada",
-                            6 => "Hielo", 7 => "Lucha", 1 => "Normal", 15 => "Siniestro",
-                            4 => "Planta", 13 => "Psíquico", 10 => "Roca", 9 => "Tierra",
-                            8 => "Veneno", 17 => "Volador"
-                        ];
-                        foreach ($tipos as $id => $nombre) {
-                            echo "<label class='custom-checkbox'>";
-                            echo "<input type='checkbox' name='tipos[]' value='$id'>";
-                            echo "<span class='checkbox-text'>$nombre</span>";
-                            echo "</label>";
-                        }
-                        ?>
+
+                        <div class="d-flex gap-4">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="12">
+                            <span class="checkbox-text">Acero</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="3">
+                            <span class="checkbox-text">Agua</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="18">
+                            <span class="checkbox-text">Bicho</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="14">
+                            <span class="checkbox-text">Dragón</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="5">
+                            <span class="checkbox-text">Eléctrico</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="11">
+                            <span class="checkbox-text">Fantasma</span>
+                        </label>
+                        </div>
+
+                        <div class="d-flex gap-4">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="2">
+                            <span class="checkbox-text">Fuego</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="16">
+                            <span class="checkbox-text">Hada</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="6">
+                            <span class="checkbox-text">Hielo</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="7">
+                            <span class="checkbox-text">Lucha</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="1">
+                            <span class="checkbox-text">Normal</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="15">
+                            <span class="checkbox-text">Siniestro</span>
+                        </label>
+                        </div>
+                        <div class="d-flex gap-4">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="4">
+                            <span class="checkbox-text">Planta</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="13">
+                            <span class="checkbox-text">Psíquico</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="10">
+                            <span class="checkbox-text">Roca</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="9">
+                            <span class="checkbox-text">Tierra</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="8">
+                            <span class="checkbox-text">Veneno</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="tipos[]" value="17">
+                            <span class="checkbox-text">Volador</span>
+                        </label>
+                        </div>
+
                     </div>
                     <small class="text-muted">Selecciona hasta dos tipos</small>
                 </div>
@@ -100,9 +166,14 @@ if (isset($_GET['pokemonVerMas'])) {
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/PokedexPrueba/includes/footer.php'; ?>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+
+<a href="../index.php">Volver</a>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="../assets/alert.js"></script>
+<script src="../assets/checkbox.js"></script>
+
 </body>
 </html>
 
