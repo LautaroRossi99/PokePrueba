@@ -7,8 +7,27 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/PokedexPrueba/database.php';
 $pokemones = obtenerPokemones($database);
 
 $pokemon = "";
+$mostrarTodos = false;
+
 if (isset($_GET['pokemon'])) {
     $pokemon = strtolower($_GET['pokemon']);
+
+    // Verificar si hay coincidencias
+    $coincidencias = array_filter($pokemones, function($poke) use ($pokemon) {
+        return strpos(strtolower($poke['nombre']), $pokemon) !== false
+            || (is_numeric($pokemon) && (int)$poke['numero_pokedex'] === (int)$pokemon)
+            || strpos(quitarTildes(strtolower($poke['tipos'])), quitarTildes(strtolower($pokemon))) !== false;
+    });
+
+    $mensajeNoEncontrado = "";
+    if (count($coincidencias) === 0) {
+        $mensajeNoEncontrado = '
+        <div class="col-12 text-center">
+            <h3 class="text-danger fw-bold mb-3">❌ No se encontraron Pokémon que coincidan con:</h3>
+            <h4 class="text-secondary mb-4">"' . htmlspecialchars($pokemon) . '"</h4>
+        </div>';
+        $mostrarTodos = true;
+    }
 }
 
 $pokemonVerMas = [];
@@ -37,14 +56,18 @@ if (isset($_GET['pokemonVerMas'])) {
 
     <div class="row justify-content-center mt-4">
         <?php
-        // Si se pasa un pokemon como parámetro, llamar a verificarSiExistePokemonElegido
-        if ($pokemon) {
+        echo $mensajeNoEncontrado;
+
+        if ($pokemon && !$mostrarTodos) {
             verificarSiExistePokemonElegido($pokemones, $pokemon);
         }
 
-        // Si se pasa pokemonVerMas como parámetro, mostrar los detalles del Pokémon
         if (!empty($pokemonVerMas)) {
             mostrarDatosPokemonEncontrado($pokemonVerMas);
+        }
+
+        if ($mostrarTodos || (!$pokemon && empty($pokemonVerMas))) {
+            mostrarDatosPokemon($pokemones);
         }
         ?>
 
