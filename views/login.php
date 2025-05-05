@@ -59,6 +59,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/PokedexPrueba/Functions/functions.php
 
             <div class="d-grid">
                 <button type="submit" class="btn btn-danger fw-bold">Ingresar</button>
+                <a class="text-decoration-none text-white mt-2" href="/PokedexPrueba/index.php">Regresar al inicio</a>
             </div>
         </form>
     </div>
