@@ -1,0 +1,31 @@
+body {
+    background: #ffe6e6;
+    min-height: 100vh;
+}
+.card {
+    border-radius: 20px;
+}
+.form-label {
+    font-weight: 600;
+}
+.btn-success {
+    background-color: #28a745;
+    border: none;
+}
+.btn-success:hover {
+    background-color: #218838;
+}
+.form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+    border-color: #dc3545;
+}
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}

@@ -27,13 +27,14 @@ if (isset($_GET['pokemonVerMas'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/style.css">
 </head>
-<body style="background-color: #ffe6e6;">
+<body class="d-flex flex-column min-vh-100" style="background-color: #ffe6e6;">
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/PokedexPrueba/includes/navbar.php'; ?>
 <div class="container mt-4">
     <form class="container d-flex flex-row justify-content-between align-items-center my-3" method="get" action="show_pokemon.php">
         <input type="text" class="form-control w-75" name="pokemon" placeholder="Buscar Pokémon..." id="buscarPokemon">
         <button class="btn btn-primary btn-md bg-danger border-none" style="border:none;" type="submit" id="btnBuscar">Buscar Pokémon</button>
     </form>
+
     <div class="row justify-content-center mt-4">
         <?php
         // Si se pasa un pokemon como parámetro, llamar a verificarSiExistePokemonElegido
@@ -48,41 +49,21 @@ if (isset($_GET['pokemonVerMas'])) {
         ?>
 
     </div>
-
+    <div class="d-flex justify-content-center m-4">
+        <a href="../index.php" class="btn btn-secondary btn-sm px-4 fw-bold d-flex align-items-center gap-2 shadow-sm">
+            <i class="bi bi-arrow-left-circle"></i> Volver
+        </a>
+    </div>
 </div>
 
 
 
-<a href="index.php">Volver</a>
+
 
 
 <!-- Remove the container if you want to extend the Footer to full width. -->
-<div class="container-fluid my-5">
-    <section class="">
-        <!-- Footer -->
-        <footer class="text-center text-white" style="background-color: rgba(220, 53, 69, 1)">
-            <!-- Grid container -->
-            <div class="container p-4 pb-0">
-                <!-- Section: CTA -->
-                <section class="">
-                    <p class="d-flex justify-content-center align-items-center">
-                        <span class="me-3">Trabajo Práctico: Pokedex</span>
-                    </p>
-                </section>
-                <!-- Section: CTA -->
-            </div>
-            <!-- Grid container -->
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/PokedexPrueba/includes/footer.php'; ?>
 
-            <!-- Copyright -->
-            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-                © 2020 Copyright:
-                <span class="me-3">Facu Guillen - Lautaro Rossi</span>
-            </div>
-            <!-- Copyright -->
-        </footer>
-        <!-- Footer -->
-    </section>
-</div>
 
 
 

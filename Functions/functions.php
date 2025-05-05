@@ -84,28 +84,24 @@ function verificarSiExistePokemonElegido($pokemones, $pokemon) {
 
     // Verifica si se encontro Poke
     if ($encontrado) {
-        echo "<div class='container'>";
+        if (count($datosPokemon) === 1) {
+            // Mostrar directamente el estilo completo
+            mostrarDatosPokemonEncontrado($datosPokemon[0]);
+        } else {
+            echo "<div class='container'>";
+            echo "<div class='row g-4 justify-content-center'>";
 
-        $cantidadPokemones = count($datosPokemon); // Contamos cuántos pokemones hay
+            foreach ($datosPokemon as $poke) {
+                echo "<div class='col-12 col-md-6 d-flex'>";
+                mostrarDatosPokemonEncontrado($poke);
+                echo "</div>";
+            }
 
-        // Definimos la clase de la columna
-        $claseColumna = ($cantidadPokemones === 1) ? "col-12 col-md-8 " : "col-12 col-md-6";
-
-        echo "<div class='row g-4 justify-content-center'>"; // justify-content-center para centrar si es uno solo
-
-        foreach ($datosPokemon as $poke) {
-            echo "<div class='$claseColumna d-flex'>"; // d-flex para que las cards tengan misma altura
-            mostrarDatosPokemonEncontrado($poke);
+            echo "</div>";
             echo "</div>";
         }
-
-        echo "</div>"; // Cerrar row
-        echo "</div>"; // Cerrar container
-    } else {
-        echo "<h1> No se encontró el nombre de: $pokemon </h1>";
-        mostrarDatosPokemon($pokemones);
     }
-}
+    }
 
 function verificarSiExistePokemonElegidoPorTipo($db, $pokemon){
     if ($pokemon['tipo_id'] == $db) {}
@@ -113,6 +109,10 @@ function verificarSiExistePokemonElegidoPorTipo($db, $pokemon){
 
 function mostrarDatosPokemonEncontrado($poke) {
     echo "<div class='card mb-3' style='border-radius: 15px; box-shadow: 0px 4px 10px rgba(0,0,0,0.1);'>";
+
+//aaaa
+    function mostrarDatosPokemonEncontrado($poke) {
+        echo "<div class='card mb-3' style='border-radius: 15px; box-shadow: 0px 4px 10px rgba(0,0,0,0.1);'>";
 
     // Centrado vertical dentro de la tarjeta
     echo "<div class='row g-0 align-items-center' style='min-height: 220px;'>";
@@ -131,15 +131,18 @@ function mostrarDatosPokemonEncontrado($poke) {
     mostrarElementoPokemon($poke['tipos']);
     echo "<p class='card-text'><small class='text-muted'>" . $poke["habitat"] . "</small></p>";
 
-    if (isset($_SESSION['usuario'])) {
-        echo '<div class="d-flex justify-content-end gap-2 mt-2">';
-        echo '<a href="modificar.php?id=' . $poke['id'] . '" class="btn btn-warning btn-sm fw-bold shadow-sm rounded-pill px-3">Modificar</a>';
-        echo '<form action="../index.php" method="get" class="form-eliminar" data-pokemon-nombre="' . $poke['nombre'] . '">
-              <input type="hidden" name="pokemonDelete" value="' . $poke["id"] . '">
-                <button class="btn btn-danger btn-sm fw-bold shadow-sm rounded-pill px-3 text-decoration-none"> Eliminar </button>
-              </form>';
-        echo '</div>';
-    }
+        if (isset($_SESSION['usuario'])) {
+            echo '<div class="d-flex justify-content-end gap-2 mt-2">';
+            echo '<form action="../views/modificar.php" method="POST">';
+            echo'<input type="hidden" name="idPokemon" value="'.$poke["id"].'">';
+            echo '<button type="submit" class="btn btn-warning btn-sm fw-bold shadow-sm rounded-pill px-3">Modificar</button>';
+            echo '</form>';
+            echo '<form action="../index.php" method="get" class="form-eliminar" data-pokemon-nombre="' . $poke['nombre'] . '">
+                  <input type="hidden" name="pokemonDelete" value="' . $poke["id"] . '">
+                    <button class="btn btn-danger btn-sm fw-bold shadow-sm rounded-pill px-3 text-decoration-none"> Eliminar </button>
+                  </form>';
+            echo '</div>';
+        }
 
     echo "</div>"; // card-body
     echo "</div>"; // col-md-8
