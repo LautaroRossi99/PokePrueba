@@ -20,7 +20,7 @@ $tiposActuales = obtenerTiposPorPokemon($database, $pokemon['id']);
     <meta charset="UTF-8">
     <title>Modificar Pokémon</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../assets/forms.css" rel="stylesheet">
+    <link href="../assets/styles/forms.css" rel="stylesheet">
 
 </head>
 <body class="d-flex flex-column min-vh-100">

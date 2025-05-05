@@ -37,3 +37,24 @@
     border-color: #607d8b !important;
     color: white !important;
 }
+
+.btn-drop {
+    background-color: #dc3545;
+    transition: background-color 0.3s ease;
+}
+
+.btn-drop:hover {
+    background-color: #bb2d3b; /* un rojo más oscuro */
+}
+
+.btn {
+    border: none !important; /* Elimina el borde */
+}
+
+.btn-check:checked + .btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check) + .btn:active {
+    background-color: #bb2d3b !important; /* Cambiar el color del fondo aquí */
+}

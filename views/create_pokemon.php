@@ -25,7 +25,8 @@ if (isset($_GET['pokemonVerMas'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Crear Pokémon</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/forms.css">
+    <link rel="stylesheet" href="../assets/styles/forms.css">
+    <link rel="stylesheet" href="../assets/styles/style.css">
 
 </head>
 <body class="d-flex flex-column min-vh-100">

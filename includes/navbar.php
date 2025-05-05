@@ -16,12 +16,22 @@
             }
 
             if (isset($_SESSION['usuario'])) {
-                echo 'Bienvenido, ' . $_SESSION['usuario'] . ' 
-          <a href="/PokedexPrueba/views/login_out.php" class="text-white">Cerrar sesión</a>';
+                echo '
+    <div class="dropdown animate__pulse">
+        <button class="btn btn-secondary dropdown-toggle btn-drop" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Bienvenido, ' . $_SESSION['usuario'] . '
+        </button>
+        <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" href="/PokedexPrueba/index.php">Inicio</a></li>
+
+            <li><a class="dropdown-item" href="/PokedexPrueba/views/create_pokemon.php">Crear Pokémon</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/PokedexPrueba/views/login_out.php">Cerrar sesión</a></li>
+        </ul>
+    </div>';
             } else {
                 echo '<a href="/PokedexPrueba/views/login.php" class="text-white text-decoration-none">Iniciar sesión</a>';
             }
-
             ?>
         </div>
     </div>

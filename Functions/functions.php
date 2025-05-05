@@ -4,6 +4,12 @@ define('RUTA_TIPOS', '/PokedexPrueba/Tipos/');
 define('RUTA_POKEMONES2', '/PokedexPrueba/Pokemones/');
 
 
+function quitarTildes($cadena) {
+    $buscar  = ['á','é','í','ó','ú','Á','É','Í','Ó','Ú'];
+    $reemplazar = ['a','e','i','o','u','A','E','I','O','U'];
+    return str_replace($buscar, $reemplazar, $cadena);
+}
+
 
 // -------------------- INDEX --------------------
 
@@ -103,14 +109,6 @@ function verificarSiExistePokemonElegido($pokemones, $pokemon) {
     }
     }
 
-function verificarSiExistePokemonElegidoPorTipo($db, $pokemon){
-    if ($pokemon['tipo_id'] == $db) {}
-}
-
-function mostrarDatosPokemonEncontrado($poke) {
-    echo "<div class='card mb-3' style='border-radius: 15px; box-shadow: 0px 4px 10px rgba(0,0,0,0.1);'>";
-
-//aaaa
     function mostrarDatosPokemonEncontrado($poke) {
         echo "<div class='card mb-3' style='border-radius: 15px; box-shadow: 0px 4px 10px rgba(0,0,0,0.1);'>";
 
@@ -150,13 +148,6 @@ function mostrarDatosPokemonEncontrado($poke) {
     echo "</div>"; // row
     echo "</div>"; // card
 }
-
-function quitarTildes($cadena) {
-    $buscar  = ['á','é','í','ó','ú','Á','É','Í','Ó','Ú'];
-    $reemplazar = ['a','e','i','o','u','A','E','I','O','U'];
-    return str_replace($buscar, $reemplazar, $cadena);
-}
-
 
 // -------------------- VALIDAR_LOGIN --------------------
 function validarLogin($usersDB, $userIngresado, $contrasenaIngresada) {
