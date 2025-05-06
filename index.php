@@ -67,16 +67,19 @@ $pokemones = obtenerPokemones($database);
     <div class="row justify-content-center mt-4">
 
         <div class="row">
-            <form class="" method="get" action="views/show_pokemon.php">
-                <div class="row align-items-center g-2">
-                    <div class="col-md-8 col-sm-8">
-                        <input type="text" class="form-control" name="pokemon" placeholder="Buscar Pokémon por nombre, tipo o número de la Pokédex" id="buscarPokemon">
+            <form method="get" action="views/show_pokemon.php" class="w-100">
+                <div class="row g-2 align-items-stretch">
+                    <!-- Input: ocupa todo en móvil, y 8 columnas en desktop -->
+                    <div class="col-12 col-md-8">
+                        <input type="text" class="form-control h-100    " name="pokemon" placeholder="Buscar Pokémon por nombre, tipo o número de la Pokédex" id="buscarPokemon">
                     </div>
-                    <div class="col-md-2 col-sm-2">
-                        <button class="btn btn-danger w-100 " type="submit" id="btnBuscar">Buscar Pokémon</button>
-                    </div>
-                    <div class="col-md-2 col-sm-2">
-                        <a href="views/create_pokemon.php" class="btn btn-success w-100 text-decoration-none">Crear Pokémon</a>
+
+                    <!-- Botones: se apilan en móvil, se alinean en fila en desktop -->
+                    <div class="col-12 col-md-4 d-flex flex-wrap justify-content-md-end gap-2">
+                        <button class="btn btn-danger flex-grow-1 flex-md-grow-0" type="submit" id="btnBuscar">Buscar Pokémon</button>
+                        <?php if (isset($_SESSION['usuario'])): ?>
+                            <a href="views/create_pokemon.php" class="btn btn-success flex-grow-1 flex-md-grow-0 text-decoration-none">Crear Pokémon</a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </form>

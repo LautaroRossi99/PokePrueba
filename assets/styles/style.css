@@ -58,3 +58,4 @@
 :not(.btn-check) + .btn:active {
     background-color: #bb2d3b !important; /* Cambiar el color del fondo aquí */
 }
+

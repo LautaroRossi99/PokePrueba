@@ -36,7 +36,7 @@ function mostrarDatosPokemon($coleccion)
         mostrarElementoPokemon($pokemon['tipos']);
         echo '</div>';
         echo '<div>';
-        echo '<form action="views/show_pokemon.php" method="get">
+        echo '<form action="/PokedexPrueba/views/show_pokemon.php" method="get">
             <input type="hidden" name="pokemonVerMas" value="' . htmlspecialchars(json_encode($pokemon)) . '">
             <button type="submit" class="btn btn-danger btn-sm fw-bold shadow-sm rounded-pill px-3">Ver más</button>
             </form>';
@@ -87,6 +87,14 @@ function verificarSiExistePokemonElegido($pokemones, $pokemon) {
             $encontrado = true;
         }
     }
+
+    // Si no encontró nada, guarda todos los pokemones
+    if (!$encontrado) {
+        $datosPokemon = $pokemones;
+        echo "<h5>No se ha encontrado el Pokémon con el nombre, tipo o id: $pokemon</h5>";
+        mostrarDatosPokemon($pokemones);
+    }
+
 
     // Verifica si se encontro Poke
     if ($encontrado) {

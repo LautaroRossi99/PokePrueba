@@ -30,9 +30,22 @@ if (isset($_GET['pokemonVerMas'])) {
 <body class="d-flex flex-column min-vh-100" style="background-color: #ffe6e6;">
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/PokedexPrueba/includes/navbar.php'; ?>
 <div class="container mt-4">
-    <form class="container d-flex flex-row justify-content-between align-items-center my-3" method="get" action="show_pokemon.php">
-        <input type="text" class="form-control w-75" name="pokemon" placeholder="Buscar Pokémon..." id="buscarPokemon">
-        <button class="btn btn-primary btn-md bg-danger border-none" style="border:none;" type="submit" id="btnBuscar">Buscar Pokémon</button>
+    <div class="row justify-content-center mt-4">
+    <form method="get" action="views/show_pokemon.php" class="w-100">
+        <div class="row g-2 align-items-stretch">
+            <!-- Input: ocupa todo en móvil, y 8 columnas en desktop -->
+            <div class="col-12 col-md-8">
+                <input type="text" class="form-control h-100    " name="pokemon" placeholder="Buscar Pokémon por nombre, tipo o número de la Pokédex" id="buscarPokemon">
+            </div>
+
+            <!-- Botones: se apilan en móvil, se alinean en fila en desktop -->
+            <div class="col-12 col-md-4 d-flex flex-wrap justify-content-md-end gap-2">
+                <button class="btn btn-danger flex-grow-1 flex-md-grow-0" type="submit" id="btnBuscar">Buscar Pokémon</button>
+                <?php if (isset($_SESSION['usuario'])): ?>
+                    <a href="views/create_pokemon.php" class="btn btn-success flex-grow-1 flex-md-grow-0 text-decoration-none">Crear Pokémon</a>
+                <?php endif; ?>
+            </div>
+        </div>
     </form>
 
     <div class="row justify-content-center mt-4">
@@ -40,12 +53,14 @@ if (isset($_GET['pokemonVerMas'])) {
         // Si se pasa un pokemon como parámetro, llamar a verificarSiExistePokemonElegido
         if ($pokemon) {
             verificarSiExistePokemonElegido($pokemones, $pokemon);
+        } elseif (!empty($pokemonVerMas)) {
+            mostrarDatosPokemonEncontrado($pokemonVerMas);
+        } elseif (empty($pokemon)) {
+            echo '<h5> No se ha ingresado ningún dato en el buscador</h5>';
+            mostrarDatosPokemon($pokemones);
         }
 
-        // Si se pasa pokemonVerMas como parámetro, mostrar los detalles del Pokémon
-        if (!empty($pokemonVerMas)) {
-            mostrarDatosPokemonEncontrado($pokemonVerMas);
-        }
+
         ?>
 
     </div>
@@ -53,6 +68,7 @@ if (isset($_GET['pokemonVerMas'])) {
         <a href="../index.php" class="btn btn-secondary btn-sm px-4 fw-bold d-flex align-items-center gap-2 shadow-sm">
             <i class="bi bi-arrow-left-circle"></i> Volver
         </a>
+    </div>
     </div>
 </div>
 
